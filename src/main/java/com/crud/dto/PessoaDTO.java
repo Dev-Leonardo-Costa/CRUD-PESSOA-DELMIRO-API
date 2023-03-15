@@ -16,7 +16,7 @@ public class PessoaDTO {
     private String sobrenome;
     @NotBlank
     @Size(max = 11)
-    private String CPF;
+    private Integer cpf;
     @NotBlank
     private String email;
     @NotBlank
