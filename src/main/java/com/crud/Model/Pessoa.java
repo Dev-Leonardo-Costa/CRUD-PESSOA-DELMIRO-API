@@ -11,8 +11,9 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Data
 @Entity
-public class Pessoa{
-    @Id
+public class Pessoa {
+   
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
@@ -21,6 +22,5 @@ public class Pessoa{
     private String email;
     private String endereco;
     private String nacionalidade;
-
 
 }
