@@ -2,25 +2,23 @@ package com.crud.DbConection;
 
 import com.crud.Model.Pessoa;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConectPessoa {
-        private Connection conexao;
+        private ConectionDB conexao;
 
-        public ConectPessoa(Connection conexao) {
-            this.conexao = conexao;
-        }
-        //função para salvar os dados no banco de dados
         public void salvar(Pessoa pessoa) throws SQLException {
             String sql = "INSERT INTO pessoa (nome, sobrenome,cpf,email,endereço,nacionalidade) VALUES (?, ? , ? , ? , ? , ?)";
-
-            PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setString(pessoa.getnome());
-            stmt.setString(pessoa.getsobrenome());
-            stmt.setString(pessoa.getcpf());
-            stmt.setString(pessoa.getemail());
-            stmt.setString(pessoa.getendereco());
-            stmt.setString(Pessoa.getnaconalidade());
+            Connection connection = conexao.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1,pessoa.getNome());
+            stmt.setString(2,pessoa.getSobrenome());
+            stmt.setString(3,pessoa.getCpf());
+            stmt.setString(4,pessoa.getEmail());
+            stmt.setString(5,pessoa.getEndereco());
+            stmt.setString(6,pessoa.getNacionalidade());
 
             stmt.executeUpdate();
             stmt.close();
